@@ -1,6 +1,9 @@
 /*-----------------   "RAINBOW"   -----------------*/
+// hold the push button and see a magic ...
 
 #include <Arduino.h>
+
+// ports
 #define red 2
 #define blue 4
 #define green 7
@@ -15,19 +18,16 @@ void setup(){
   pinMode(green, OUTPUT);
   pinMode(blue, OUTPUT);
   pinMode(button, INPUT);
-  
-  Serial.begin(9600);
 }
 
 void loop(){
-  if(color == 7){
+  if(color == 7){ // reset
     color = 0;
   }
 
   if(digitalRead(button) == HIGH){
     color += 1;
     changeColor(color);
-    Serial.println(color);
   }
   
   delay(100);
@@ -54,13 +54,13 @@ void changeColor(int num){
     digitalWrite(blue, HIGH);
   }
   
-  if(num == 4){ // Laranja
+  if(num == 4){ // Orange
     digitalWrite(red, HIGH);
     digitalWrite(green, HIGH);
     digitalWrite(blue, LOW);
   }
   
-  if(num == 5){ // Ciano
+  if(num == 5){ // Cyan
     digitalWrite(red, LOW);
     digitalWrite(green, HIGH);
     digitalWrite(blue, HIGH);
@@ -72,7 +72,7 @@ void changeColor(int num){
     digitalWrite(blue, HIGH);
   }
   
-  if(num == 7){ // Branco
+  if(num == 7){ // White
     digitalWrite(red, HIGH);
     digitalWrite(green, HIGH);
     digitalWrite(blue, HIGH);
